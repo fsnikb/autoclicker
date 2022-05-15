@@ -4,16 +4,19 @@
 #include <random>
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
-/*
-int outlier()
+int outlier(void)
 {
     std::mt19937 mersenne{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
-    std::uniform_int_distribution die{ 20, 50 };
+    std::uniform_int_distribution die{ 150, 200 };
+    if (die(mersenne) == 200)
+    {
+        Sleep(die(mersenne));
+    }
 
     return die(mersenne);
 }
-*/
 
 /*
 int clicks()
@@ -33,29 +36,30 @@ int clicks()
 int randomisation()
 {
     std::mt19937 mersenne{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
-    std::uniform_int_distribution die{ 2, 4 };
+    std::uniform_int_distribution die{25, 31 };
 
     return die(mersenne);
 }
+
+/*
 int randomisation2()
 {
     std::mt19937 mersenne{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
-    std::uniform_int_distribution die{ 2, 4 };
+    std::uniform_int_distribution die{ 5, 7 };
 
     return die(mersenne);
 }
+*/
+/*
 int randomisation3()
 {
     std::mt19937 mersenne{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
-    std::uniform_int_distribution die{ 19, 30 };
-    if (die(mersenne) == 30)
-    {
-        int a = rand() % 50 + 30;
-        Sleep(a);
-    }
+    std::uniform_int_distribution die{ 5, 7 };
+
 
     return die(mersenne);
 }
+*/
 
 void down()
 {
@@ -75,9 +79,10 @@ void up()
 
 void clicker()
 {
-    Sleep(randomisation() + randomisation2() * 4);
+    outlier();
+    Sleep(randomisation());
     down();
-    Sleep(randomisation() + randomisation2() * 4);
+    Sleep(randomisation());
     up();
 }
 
